@@ -40,7 +40,12 @@ FROM ffmpeg-base AS ffmpeg-builder
 COPY build/ffmpeg.sh /src/build.sh
 RUN bash -x /src/build.sh \
       --enable-gpl \
-      --enable-libx264
+      --enable-libx264 \
+      --enable-avcodec \
+      --enable-avformat \
+      --enable-avfilter \
+      --enable-swscale \
+      --enable-swresample
 
 # Build ffmpeg.wasm
 FROM ffmpeg-builder AS ffmpeg-wasm-builder
