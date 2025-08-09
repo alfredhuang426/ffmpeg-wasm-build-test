@@ -26,6 +26,9 @@
     "packages/*",
     "apps/*"
   ],
+  "overrides": {
+    "vinxi": "^0.5.7"
+  },
   "devDependencies": {
     "chai": "^4.3.7",
     "http-server": "^14.1.1",
