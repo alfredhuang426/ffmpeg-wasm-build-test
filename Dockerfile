@@ -39,24 +39,8 @@ COPY --from=x264-builder $INSTALL_DIR $INSTALL_DIR
 FROM ffmpeg-base AS ffmpeg-builder
 COPY build/ffmpeg.sh /src/build.sh
 RUN bash -x /src/build.sh \
-      --disable-everything \
       --enable-gpl \
-      --enable-libx264 \
-      --enable-protocol=file \
-      --enable-demuxer=mov \
-      --enable-muxer=mp4 \
-      --enable-muxer=avi \
-      --enable-parser=h264 \
-      --enable-decoder=h264 \
-      --enable-decoder=aac \
-      --enable-encoder=libx264 \
-      --enable-encoder=aac \
-      --enable-encoder=mpeg4 \
-      --enable-encoder=pcm_s16le \
-      --enable-bsf=aac_adtstoasc \
-      --enable-filter=scale,format,aformat,fps \
-      --enable-swscale \
-      --enable-swresample
+      --enable-libx264
 
 # Build ffmpeg.wasm
 FROM ffmpeg-builder AS ffmpeg-wasm-builder
